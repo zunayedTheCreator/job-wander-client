@@ -18,7 +18,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <button className='btn rounded bg-sky-500 font-bold px-6 text-lg text-black hover:bg-sky-300'>Login</button>
+                <Link to={'/login'}><button className='btn rounded bg-sky-500 font-bold px-6 text-lg text-black hover:bg-sky-300'>Login</button></Link>
                 <label className="swap swap-rotate hidden lg:grid">
                     <input type="checkbox" className="theme-controller hidden" value="dark" />
                     {/* sun icon */}

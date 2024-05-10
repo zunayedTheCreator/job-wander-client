@@ -6,3 +6,8 @@ input.no-outline:focus {
     outline: none;
     border: none;
 }
+
+.blur-bg {
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+}

@@ -3,7 +3,7 @@ import { Accordion } from "flowbite-react";
 
 const Blogs = () => {
     return (
-        <div className="mt-14">
+        <div className="mt-14 max-w-7xl mx-auto">
             <h2 className="text-sky-500 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-center">Frequently Asked Question</h2>
             <div className="border-t-2 border-sky-800 w-4/6 mx-auto mt-1 mb-14"></div>
             <div className="lg:mx-[140px]">
