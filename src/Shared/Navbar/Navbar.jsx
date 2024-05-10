@@ -1,16 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
     const navLinks = <>
-        <li><a><NavLink>Home</NavLink></a></li>
+        <li><a><NavLink to={'/'}>Home</NavLink></a></li>
         <li><a><NavLink>All Jobs</NavLink></a></li>
-        <li><a><NavLink>Blogs</NavLink></a></li>
+        <li><a><NavLink to={'/blogs'}>Blogs</NavLink></a></li>
     </>
     return (
         <div className="navbar bg-base-100 md:px-6 border-b-2 drop-shadow-lg border-sky-600">
             <div className="navbar-start">
-                <a className="text-3xl font-bold">Job<span className='text-sky-500'>Wander</span></a>
+                <Link><a className="text-3xl font-bold">Job<span className='text-sky-500'>Wander</span></a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-2 font-bold">
