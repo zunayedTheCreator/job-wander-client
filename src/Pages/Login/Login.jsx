@@ -1,6 +1,7 @@
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import bg from '../../../public/vid/login-bg.mp4'
 import { Link } from 'react-router-dom';
+
 const Login = () => {
     return (
         <div className="relative w-full h-[800px]">
@@ -11,8 +12,8 @@ const Login = () => {
             <div className='absolute z-10 w-full flex justify-center top-20'>
                 <form className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded'>
                     <h2 className='text-5xl font-bold text-sky-500 text-center mb-5'>Login</h2>
-                    <input type="text" placeholder="Your Email" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
-                    <input type="password" placeholder="Enter Password" className="input input-bordered w-full rounded border-2 border-sky-600 font-bold text-black bg-white" />
+                    <input required type="email" placeholder="Your Email" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
+                    <input required type="password" placeholder="Enter Password" className="input input-bordered w-full rounded border-2 border-sky-600 font-bold text-black bg-white" />
                     <div className='text-center'>
                         <button className='btn w-full rounded bg-sky-500 hover:bg-sky-400 mt-3 text-black font-bold'>Login</button>
                     </div>
@@ -24,7 +25,7 @@ const Login = () => {
                         </div>
                     </div>
                     <div className='border-t-2 border-sky-700 mb-2'></div>
-                    <h4 className='text-black font-bold text-center mb-1'>New here? <Link><span className='font-extrabold text-sky-600'>Register Now</span></Link></h4>
+                    <h4 className='text-black font-bold text-center mb-1'>New here? <Link to={'/register'}><span className='font-extrabold text-sky-600'>Register Now</span></Link></h4>
                 </form>
             </div>
         </div>
