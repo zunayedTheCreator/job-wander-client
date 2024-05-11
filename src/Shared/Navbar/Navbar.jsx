@@ -1,12 +1,54 @@
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
     const navLinks = <>
-        <li><a><NavLink to={'/'}>Home</NavLink></a></li>
-        <li><a><NavLink>All Jobs</NavLink></a></li>
-        <li><a><NavLink to={'/blogs'}>Blogs</NavLink></a></li>
+        <NavLink to={'/'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>Home</a></li></NavLink>
+        <NavLink className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>All Jobs</a></li></NavLink>
+        <NavLink to={'/blogs'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>Blogs</a></li></NavLink>
     </>
+
+    const user1 = localStorage.getItem('signedUser');
+    const signedUser = JSON.parse(user1);
+    const photo1 = signedUser?.photo;
+    const name1 = signedUser?.name;
+    
+    const user2 = localStorage.getItem('loggedUser');
+    const loggedUser = JSON.parse(user2);
+    const photo2 = loggedUser?.providerData[0]?.photoURL;
+    const name2 = loggedUser?.providerData[0]?.displayName;
+
+    const handleSignOut = () => {
+        localStorage.removeItem('signedUser')
+        localStorage.removeItem('loggedUser')
+        Swal.fire({
+            title: "Successfully Logged Out",
+            icon: "success"
+        });
+        setTimeout(() => { 
+            location.reload()
+        }, 2000);
+    }
+
     return (
         <div className="navbar bg-base-100 md:px-6 border-b-2 drop-shadow-lg border-sky-600">
             <div className="navbar-start">
@@ -18,7 +60,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <Link to={'/login'}><button className='btn rounded bg-sky-500 font-bold px-6 text-lg text-black hover:bg-sky-300'>Login</button></Link>
+
+                { user1 || user2 ? (<div className="avatar">
+                    <div className="w-10 rounded-full ring ring-sky-500 ring-offset-base-100 ring-offset-2 mr-2">
+                      <img src={photo1 || photo2} />
+                    </div>
+                  </div>) : <></>}
+
+                { user1 || user2 ? <button onClick={handleSignOut} className='btn rounded bg-red-600 font-bold px-6 text-lg text-black hover:bg-red-500'>SignOut</button> : <Link to={'/login'}><button className='btn rounded bg-sky-500 font-bold px-6 text-lg text-black hover:bg-sky-300'>Login</button></Link>}
+
                 <label className="swap swap-rotate hidden lg:grid">
                     <input type="checkbox" className="theme-controller hidden" value="dark" />
                     {/* sun icon */}
