@@ -1,13 +1,10 @@
-import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import bg from '../../../public/img/register-bg.png'
 
 const Register = () => {
     return (
-        <div className="relative w-full h-[600px] bg-center">
-            <img className='w-full h-full absolute object-cover z-0' src={bg} alt="" />
+        <div className="relative w-full bg-center">
             <div className='absolute z-10 w-full flex justify-center top-16'>
-                <form className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded'>
+                <form className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded border-2 border-sky-400 drop-shadow-xl'>
                     <h2 className='text-5xl font-bold text-sky-500 text-center mb-5'>Register</h2>
                     <input required type="text" placeholder="Your Name" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
                     <input required type="email" placeholder="Your Email" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
