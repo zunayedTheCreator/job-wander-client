@@ -1,12 +1,14 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { useContext } from 'react';
+import Swal from 'sweetalert2'
 
 const Login = () => {
 
     const {googleLogin} = useContext(AuthContext);
+    const {githubLogin} = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
@@ -19,9 +21,46 @@ const Login = () => {
                 const loggedUser = JSON.stringify(user);
                 localStorage.setItem('loggedUser', loggedUser);
             }
+            else{
+                Swal.fire({
+                    title: "Already Logged In",
+                    icon: "error"
+                  });
+            }
         })
         .catch(error => {
             console.error(error);
+            Swal.fire({
+                title: "Something went wrong :(",
+                icon: "error"
+              });
+        })
+    }
+    
+    const githubProvider = new GithubAuthProvider();
+    const handleGithubLogin = () => {
+        githubLogin(githubProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            const existedUser = localStorage.getItem('loggedUser')
+            if (!existedUser) {
+                const loggedUser = JSON.stringify(user);
+                localStorage.setItem('loggedUser', loggedUser);
+            }
+            else{
+                Swal.fire({
+                    title: "Already Logged In",
+                    icon: "error"
+                  });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            Swal.fire({
+                title: "Something went wrong :(",
+                icon: "error"
+              });
         })
     }
 
@@ -41,7 +80,7 @@ const Login = () => {
                         <h5 className='text-sky-700 font-bold text-center mb-1'>Or login with-</h5>
                         <div className='flex items-center gap-4'>
                             <button onClick={handleGoogleLogin} className='border-x-0 rounded-none btn border-y-2 border-sky-600 px-8 py-1 duration-200 hover:bg-sky-200 text-sky-500 hover:text-black bg-white'><FaGoogle className='text-3xl'></FaGoogle></button>
-                            <button className='border-x-0 rounded-none btn border-y-2 border-sky-600 px-8 py-1 duration-200 hover:bg-sky-200 text-sky-500 hover:text-black bg-white'><FaGithub className='text-3xl'></FaGithub></button>
+                            <button onClick={handleGithubLogin} className='border-x-0 rounded-none btn border-y-2 border-sky-600 px-8 py-1 duration-200 hover:bg-sky-200 text-sky-500 hover:text-black bg-white'><FaGithub className='text-3xl'></FaGithub></button>
                         </div>
                     </div>
                     <div className='border-t-2 border-sky-700 mb-2'></div>

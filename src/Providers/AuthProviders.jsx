@@ -15,9 +15,14 @@ const AuthProviders = ({children}) => {
         return signInWithPopup(auth, provider)
     }
 
+    const githubLogin = (provider) => {
+        return signInWithPopup(auth, provider)
+    }
+
     const authInfo = {
         createUser,
         googleLogin,
+        githubLogin
     }
 
     return (

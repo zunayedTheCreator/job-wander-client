@@ -49,7 +49,13 @@ const Register = () => {
                     }
                 })
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                Swal.fire({
+                    title: "Something went wrong :(",
+                    icon: "error"
+                  });
+            })
     }
 
     return (
