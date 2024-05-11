@@ -3,9 +3,11 @@ import Navbar from '../Shared/Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div>
+        <div className='h-full'>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='h-full'>
+                <Outlet></Outlet>
+            </div>
         </div>
     );
 };
