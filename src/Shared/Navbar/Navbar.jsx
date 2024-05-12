@@ -5,7 +5,43 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Navbar = () => {
+
+    const user1 = localStorage.getItem('signedUser');
+    const signedUser = JSON.parse(user1);
+    const photo1 = signedUser?.photo;
+    const name1 = signedUser?.name;
+    
+    const user2 = localStorage.getItem('loggedUser');
+    const loggedUser = JSON.parse(user2);
+    const photo2 = loggedUser?.providerData[0]?.photoURL;
+    const name2 = loggedUser?.providerData[0]?.displayName;
+
+    const privateRoutes = <>
+        <NavLink to={'/add-a-job'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>Add A Job</a></li></NavLink>
+        <NavLink to={'/my-jobs'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>My Jobs</a></li></NavLink>
+        <NavLink to={'/applied-jobs'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-sky-500 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li><a>Applied Jobs</a></li></NavLink>
+    </>
+
     const navLinks = <>
+
         <NavLink to={'/'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
@@ -27,17 +63,10 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>Blogs</a></li></NavLink>
+        {
+            user1 || user2 ? privateRoutes : <></>
+        }
     </>
-
-    const user1 = localStorage.getItem('signedUser');
-    const signedUser = JSON.parse(user1);
-    const photo1 = signedUser?.photo;
-    const name1 = signedUser?.name;
-    
-    const user2 = localStorage.getItem('loggedUser');
-    const loggedUser = JSON.parse(user2);
-    const photo2 = loggedUser?.providerData[0]?.photoURL;
-    const name2 = loggedUser?.providerData[0]?.displayName;
 
     const {signOutUser} = useContext(AuthContext)
 
