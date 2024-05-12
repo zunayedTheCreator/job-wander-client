@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../Shared/Navbar/Navbar';
+import FooterWeb from '../Shared/FooterWeb/FooterWeb';
 
 const Main = () => {
     return (
@@ -8,6 +9,7 @@ const Main = () => {
             <div className='h-full'>
                 <Outlet></Outlet>
             </div>
+            <FooterWeb></FooterWeb>
         </div>
     );
 };

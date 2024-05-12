@@ -13,7 +13,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>Home</a></li></NavLink>
-        <NavLink className={({ isActive, isPending }) =>
+        <NavLink to={'/all-jobs'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
                         : isPending

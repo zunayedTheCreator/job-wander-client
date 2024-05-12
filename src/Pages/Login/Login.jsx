@@ -36,6 +36,12 @@ const Login = () => {
                         icon: "success"
                       });
                 }
+                else{
+                    Swal.fire({
+                        title: "Already Logged In",
+                        icon: "error"
+                      });
+                }
             })
         })
         .catch(error => {
