@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
+import { RxSlash } from "react-icons/rx";
 
 const Navbar = () => {
 
@@ -24,6 +25,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>Add A Job</a></li></NavLink>
+        <RxSlash className="text-lg mx-1"></RxSlash>
         <NavLink to={'/my-jobs'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
@@ -31,6 +33,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>My Jobs</a></li></NavLink>
+        <RxSlash className="text-lg mx-1"></RxSlash>
         <NavLink to={'/applied-jobs'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
@@ -49,6 +52,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>Home</a></li></NavLink>
+        <RxSlash className="text-lg mx-1"></RxSlash>
         <NavLink to={'/all-jobs'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
@@ -56,6 +60,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>All Jobs</a></li></NavLink>
+        <RxSlash className="text-lg mx-1"></RxSlash>
         <NavLink to={'/blogs'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-sky-500 text-black"
@@ -63,6 +68,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li><a>Blogs</a></li></NavLink>
+        <RxSlash className="text-lg mx-1"></RxSlash>
         {
             user1 || user2 ? privateRoutes : <></>
         }
@@ -89,7 +95,7 @@ const Navbar = () => {
                 <Link><a className="text-3xl font-bold">Job<span className='text-sky-500'>Wander</span></a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 gap-2 font-bold">
+                <ul className="menu menu-horizontal px-1 font-bold items-center">
                     {navLinks}
                 </ul>
             </div>

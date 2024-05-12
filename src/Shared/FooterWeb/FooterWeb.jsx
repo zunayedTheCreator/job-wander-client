@@ -4,7 +4,7 @@ import { FaDribbble, FaFacebook, FaGithub, FaInstagram, FaTwitch, FaTwitter } fr
 
 const FooterWeb = () => {
 
-    const brand = <h4 className="text-white font-bold text-4xl">Job<span className="text-sky-500">Wander</span></h4>
+    const brand = <h4 className="text-white font-bold text-4xl">Job<span className="text-sky-400">Wander</span></h4>
 
     return (
         <div>
