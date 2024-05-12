@@ -59,7 +59,7 @@ const Register = () => {
     }
 
     return (
-        <div className="relative w-full bg-center">
+        <div className="relative w-full bg-center h-[550px]">
             <div className='absolute z-10 w-full flex justify-center top-16'>
                 <form onSubmit={handleCreateUser} className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded border-2 border-sky-400 drop-shadow-xl'>
                     <h2 className='text-5xl font-bold text-sky-500 text-center mb-5'>Register</h2>

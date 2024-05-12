@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 const AddJob = () => {
     const presentDate = new Date();
     const formattedDate = presentDate.toISOString().substr(0, 10);
@@ -29,6 +31,26 @@ const AddJob = () => {
         const newJob = {user_name, user_email, job_title, job_category, salary, description, posting_date, deadline_date, photo, total_applicants}
 
         console.log(newJob);
+
+        fetch('http://localhost:5000/job', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newJob)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Job successfully added',
+                    icon: 'success',
+                    confirmButtonText: 'Nice'
+                })
+            }
+        })
     }
 
     return (

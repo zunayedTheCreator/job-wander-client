@@ -108,7 +108,7 @@ const Login = () => {
     }
 
     return (
-        <div className="relative w-full">
+        <div className="relative w-full h-[550px]">
             <div className='absolute z-10 w-full flex justify-center top-20'>
                 <div className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded border-2 border-sky-400 drop-shadow-xl'>
                     <form onSubmit={handleLogin}>
