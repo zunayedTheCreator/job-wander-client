@@ -1,17 +1,39 @@
 import { useLoaderData } from "react-router-dom";
 import JobTables from "./JobTables";
 import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const AllJobs = () => {
-
+    const [searchQuery, setSearchQuery] = useState('');
+    const [jobResults, setJobResults] = useState([]);
     const jobs = useLoaderData();
+
+    useEffect(() => {
+        if (jobs) {
+            setJobResults(jobs);
+        }
+    }, [jobs]);
+
+    const handleSearch = async () => {
+        try {
+            const response = await fetch(`/job?query=${encodeURIComponent(searchQuery)}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch search results');
+            }
+            const data = await response.json();
+            setJobResults(data);
+        } catch (error) {
+            console.error('Error fetching search results:', error);
+            setJobResults([]);
+        }
+    };
 
     return (
         <div className="mt-14 w-full lg:w-[1000px] xl:w-[1300px] mx-auto">
             <div className="w-full flex justify-end">
-                <form className='w-fit mx-auto md:mx-0 md:mr-5'>
+                <form onSubmit={handleSearch} className='w-fit mx-auto md:mx-0 md:mr-5'>
                     <div className='w-fit py-1 px-3 gap-2 flex items-center border-2 rounded-md'>
-                        <input type="text" placeholder="Type here" className="input w-full max-w-xs no-outline rounded-none border text-black font-bold" />
+                        <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} type="text" placeholder="Type here" className="input w-full max-w-xs no-outline rounded-none border text-black font-bold" />
                         <button className='btn px-6 min-h-0 h-[46px] border-none bg-sky-400 hover:bg-sky-300'><FaSearch className='text-black'></FaSearch></button>
                     </div>
                 </form>
@@ -34,7 +56,7 @@ const AllJobs = () => {
                     </thead>
                     <tbody>
                         {
-                            jobs.map(job => <JobTables key={job._id} job={job}></JobTables>)
+                            jobResults.map(job => <JobTables key={job._id} job={job}></JobTables>)
                         }
                     </tbody>
                 </table>

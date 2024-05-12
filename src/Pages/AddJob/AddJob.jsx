@@ -76,7 +76,7 @@ const AddJob = () => {
 
                     {/* ------------------------- */}
                     <div className="px-4 md:px-24 pb-2 flex flex-col md:flex-row md:justify-between gap-5">
-                        <input required type="text" name="salary" placeholder="Salary range" className="input input-bordered rounded w-full md:w-1/2" />
+                        <input required type="number" name="salary" placeholder="Salary range" className="input input-bordered rounded w-full md:w-1/2" />
                         <input required type="text" name="description" placeholder="Job description" className="input input-bordered rounded w-full md:w-1/2" />
                     </div>
 
