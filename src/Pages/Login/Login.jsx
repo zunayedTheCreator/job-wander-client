@@ -7,8 +7,45 @@ import Swal from 'sweetalert2'
 
 const Login = () => {
 
+    const {signInUser} = useContext(AuthContext);
     const {googleLogin} = useContext(AuthContext);
     const {githubLogin} = useContext(AuthContext);
+
+    const handleLogin = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        signInUser(email, password)
+        .then(result => {
+            console.log(result.user);
+
+            fetch(`http://localhost:5000/user/${email}`)
+            .then(res => res.json())
+            .then(data => {
+                const user = data[0];
+                const existedUser = localStorage.getItem('signedUser');
+                if (!existedUser) {
+                    const signedUser = JSON.stringify(user)
+                    localStorage.setItem('signedUser', signedUser)
+                    Swal.fire({
+                        title: "Logged In :)",
+                        icon: "success"
+                      });
+                }
+            })
+        })
+        .catch(error => {
+            console.error(error);
+            Swal.fire({
+                title: "Something went wrong :(",
+                icon: "error"
+              });
+        })
+    }
 
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
@@ -68,10 +105,10 @@ const Login = () => {
         <div className="relative w-full">
             <div className='absolute z-10 w-full flex justify-center top-20'>
                 <div className='p-4 w-[340px] md:w-[400px] bg-white py-8 rounded border-2 border-sky-400 drop-shadow-xl'>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <h2 className='text-5xl font-bold text-sky-500 text-center mb-5'>Login</h2>
-                        <input required type="email" placeholder="Your Email" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
-                        <input required type="password" placeholder="Enter Password" className="input input-bordered w-full rounded border-2 border-sky-600 font-bold text-black bg-white" />
+                        <input required name='email' type="email" placeholder="Your Email" className="input input-bordered w-full mb-3 rounded border-2 border-sky-600 font-bold text-black bg-white" />
+                        <input required name='password' type="password" placeholder="Enter Password" className="input input-bordered w-full rounded border-2 border-sky-600 font-bold text-black bg-white" />
                         <div className='text-center'>
                             <button className='btn w-full rounded bg-sky-500 hover:bg-sky-400 mt-3 text-black font-bold'>Login</button>
                         </div>
