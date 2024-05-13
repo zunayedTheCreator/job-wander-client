@@ -46,7 +46,7 @@ const MyJobs = () => {
                     </thead>
                     <tbody>
                         {
-                            loadedDatas.map(job => <MyJobTable key={job._id} job={job}></MyJobTable>)
+                            loadedDatas.map(job => <MyJobTable key={job._id} job={job} setLoadedDatas={setLoadedDatas} loadedDatas={loadedDatas}></MyJobTable>)
                         }
                     </tbody>
                 </table>
