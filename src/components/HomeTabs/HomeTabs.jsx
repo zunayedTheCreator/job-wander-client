@@ -51,35 +51,35 @@ const HomeTabs = () => {
     return (
         <Tabs aria-label="Tabs with underline" style="underline" className='border-b-2 border-sky-600 pb-4'>
             <Tabs.Item active title="All Jobs">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[100px] xl:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 px-0 lg:px-[150px] xl:px-12">
                     {
                         allJobs.map(job => <TabsCard key={job._id} job={job}></TabsCard>)
                     }
                 </div>
             </Tabs.Item>
             <Tabs.Item title="On-Site Jobs">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[100px] xl:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[150px] xl:px-12">
                     {
                         onSiteJobs.map(job => <TabsCard key={job._id} job={job}></TabsCard>)
                     }
                 </div>
             </Tabs.Item>
             <Tabs.Item title="Remote Jobs">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[100px] xl:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[150px] xl:px-12">
                     {
                         remoteJobs.map(job => <TabsCard key={job._id} job={job}></TabsCard>)
                     }
                 </div>
             </Tabs.Item>
             <Tabs.Item title="Hybrid Jobs">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[100px] xl:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[150px] xl:px-12">
                     {
                         hybridJobs.map(job => <TabsCard key={job._id} job={job}></TabsCard>)
                     }
                 </div>
             </Tabs.Item>
             <Tabs.Item title="Part-Time Jobs">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[100px] xl:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-0 lg:px-[150px] xl:px-12">
                     {
                         partTimeJobs.map(job => <TabsCard key={job._id} job={job}></TabsCard>)
                     }

@@ -2,8 +2,7 @@ import React from 'react';
 import Swal from 'sweetalert2'
 
 const AddJob = () => {
-    const presentDate = new Date();
-    const formattedDate = presentDate.toISOString().substr(0, 10);
+    const currentDate = new Date().toISOString().slice(0, 10);
 
     const total_applicants = 0;
 
@@ -87,7 +86,7 @@ const AddJob = () => {
                             <div className="label">
                                 <span className="label-text">Posting Date</span>
                             </div>
-                            <input required defaultValue={formattedDate} type="date" name="posting_date" placeholder="Posting Date" className="input input-bordered rounded w-full" />
+                            <input required defaultValue={currentDate} type="date" name="posting_date" placeholder="Posting Date" className="input input-bordered rounded w-full" />
                         </label>
                         <label className="form-control w-full md:w-1/2">
                             <div className="label">
