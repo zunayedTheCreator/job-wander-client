@@ -12,6 +12,7 @@ import AddJob from "./Pages/AddJob/AddJob";
 import MyJobs from "./Pages/MyJobs/MyJobs";
 import AuthProviders from './Providers/AuthProviders';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import UpdateJob from './Pages/UpdateJob/UpdateJob';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
           {
               path: '/my-jobs',
               element: <MyJobs></MyJobs>,
+          },
+          {
+              path: '/update-job/:id',
+              element: <UpdateJob></UpdateJob>,
+              loader: ({params}) => fetch(`http://localhost:5000/job/${params.id}`)
           },
       ]
   }

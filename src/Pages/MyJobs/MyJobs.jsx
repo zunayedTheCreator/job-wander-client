@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from "react";
 import MyJobTable from "./MyJobTable";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 const MyJobs = () => {
     const [loadedDatas , setLoadedDatas] = useState([])
@@ -14,14 +13,15 @@ const MyJobs = () => {
     const loggedUser = JSON.parse(user2);
     const email2 = loggedUser?.providerData[0]?.email;
 
-    fetch(`http://localhost:5000/job/${email1 || email2}`)
+    const currentEmail = email1 || email2;
+
+    fetch(`http://localhost:5000/job/${currentEmail}`)
     .then(res => res.json())
     .then(data => {
         setLoadedDatas(data)
     })
     .catch(error => {
         console.error(error);
-        return location.reload();
     })
 
     return (
@@ -50,9 +50,6 @@ const MyJobs = () => {
                         }
                     </tbody>
                 </table>
-            </div>
-            <div className="flex justify-end">
-                <h3 className="font-bold text-red-600 flex items-center gap-1 mr-6 lg:mr-0 mt-2 hover:underline cursor-pointer"><FaRegTrashAlt className="text-xl"></FaRegTrashAlt> Delete all jobs</h3>
             </div>
         </div>
     );

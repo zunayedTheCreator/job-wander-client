@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaRegCheckCircle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const MyJobTable = ({job, loadedDatas, setLoadedDatas}) => {
@@ -45,7 +46,7 @@ const MyJobTable = ({job, loadedDatas, setLoadedDatas}) => {
             <td className="font-bold">{posting_date}</td>
             <td className="font-bold">{deadline_date}</td>
             <td className="font-bold">${salary}</td>
-            <td><button className="btn min-h-0 h-10 rounded bg-yellow-400 hover:bg-yellow-300 font-bold text-black">Update</button></td>
+            <td><Link to={`/update-job/${_id}`}><button className="btn min-h-0 h-10 rounded bg-yellow-400 hover:bg-yellow-300 font-bold text-black">Update</button></Link></td>
             <td><button onClick={() => handleDelete(_id)} className="btn min-h-0 h-10 rounded bg-red-500 hover:bg-red-400 font-bold text-black">Delete</button></td>
         </tr>
     );
