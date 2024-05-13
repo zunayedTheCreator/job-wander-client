@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { RxSlash } from "react-icons/rx";
+import { Tooltip } from 'flowbite-react';
 
 const NavbarWeb = () => {
 
@@ -91,7 +92,7 @@ const NavbarWeb = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 md:px-6 border-b-2 drop-shadow-lg border-sky-600">
+        <div className="navbar md:px-6 border-b-2 drop-shadow-lg border-sky-600 fixed top-0 left-0 w-full z-[1000] bg-[#ffffffE6] text-black">
             <div className="navbar-start">
                 <Link><a className="text-3xl font-bold">Job<span className='text-sky-500'>Wander</span></a></Link>
             </div>
@@ -102,11 +103,14 @@ const NavbarWeb = () => {
             </div>
             <div className="navbar-end gap-2">
 
-                { user1 || user2 ? (<div className="avatar">
-                    <div className="w-10 rounded-full ring ring-sky-500 ring-offset-base-100 ring-offset-2 mr-2">
-                      <img src={photo1 || photo2} />
-                    </div>
-                  </div>) : <></>}
+                { user1 || user2 ? 
+                    (<Tooltip content={name1 || name2} placement="bottom">
+                        <div className="avatar">
+                            <div className="w-10 rounded-full ring ring-sky-500 ring-offset-base-100 ring-offset-2 mr-2">
+                            <img src={photo1 || photo2} />
+                            </div>
+                        </div>
+                    </Tooltip>) : <></>}
 
                 { user1 || user2 ? <button onClick={handleSignOut} className='btn rounded bg-red-600 font-bold px-6 text-lg text-black hover:bg-red-500'>SignOut</button> : <Link to={'/login'}><button className='btn rounded bg-sky-500 font-bold px-6 text-lg text-black hover:bg-sky-300'>Login</button></Link>}
 

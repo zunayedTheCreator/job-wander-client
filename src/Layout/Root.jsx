@@ -5,9 +5,9 @@ import FooterWeb from '../Shared/FooterWeb/FooterWeb';
 
 const Root = () => {
     return (
-        <div className='h-full'>
+        <div>
             <NavbarWeb></NavbarWeb>
-            <div className='h-full'>
+            <div className='pt-20'>
                 <Outlet></Outlet>
             </div>
             <FooterWeb></FooterWeb>
