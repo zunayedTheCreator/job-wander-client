@@ -1,3 +1,4 @@
+import React from 'react';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

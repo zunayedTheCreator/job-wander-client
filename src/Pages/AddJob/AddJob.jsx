@@ -1,3 +1,4 @@
+import React from 'react';
 import Swal from 'sweetalert2'
 
 const AddJob = () => {
@@ -67,10 +68,10 @@ const AddJob = () => {
                         <input required type="text" name="job_title" placeholder="Job Title" className="input input-bordered rounded w-full md:w-1/2" />
                         <select placeholder="fgnjfkd" required name="job_category" className="select select-bordered rounded w-full md:w-1/2">
                             <option selected>No category</option>
-                            <option>On-Site Job</option>
-                            <option>Remote Job</option>
-                            <option>Part-Time Job</option>
-                            <option>Hybrid Job</option>
+                            <option>On-Site Jobs</option>
+                            <option>Remote Jobs</option>
+                            <option>Hybrid Jobs</option>
+                            <option>Part-Time Jobs</option>
                         </select>
                     </div>
 

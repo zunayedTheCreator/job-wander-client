@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import img from '../../../public/img/banner.svg'
 import human from '../../../public/img/banner-human.png'

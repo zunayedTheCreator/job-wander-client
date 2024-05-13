@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLoaderData } from "react-router-dom";
 import JobTables from "./JobTables";
 import { FaSearch } from "react-icons/fa";
@@ -14,7 +15,8 @@ const AllJobs = () => {
         }
     }, [jobs]);
 
-    const handleSearch = async () => {
+    const handleSearch = async e => {
+        e.preventDefault();
         try {
             const response = await fetch(`/job?query=${encodeURIComponent(searchQuery)}`);
             if (!response.ok) {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import Swal from 'sweetalert2'
@@ -5,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { RxSlash } from "react-icons/rx";
 
-const Navbar = () => {
+const NavbarWeb = () => {
 
     const user1 = localStorage.getItem('signedUser');
     const signedUser = JSON.parse(user1);
@@ -139,4 +140,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavbarWeb;

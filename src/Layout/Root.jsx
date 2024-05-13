@@ -1,11 +1,12 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../Shared/Navbar/Navbar';
+import NavbarWeb from '../Shared/NavbarWeb/NavbarWeb';
 import FooterWeb from '../Shared/FooterWeb/FooterWeb';
 
-const Main = () => {
+const Root = () => {
     return (
         <div className='h-full'>
-            <Navbar></Navbar>
+            <NavbarWeb></NavbarWeb>
             <div className='h-full'>
                 <Outlet></Outlet>
             </div>
@@ -14,4 +15,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default Root;

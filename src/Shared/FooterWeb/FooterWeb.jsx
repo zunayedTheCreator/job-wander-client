@@ -1,3 +1,4 @@
+import React from 'react';
 "use client";
 import { Footer } from "flowbite-react";
 import { FaDribbble, FaFacebook, FaGithub, FaInstagram, FaTwitch, FaTwitter } from "react-icons/fa";

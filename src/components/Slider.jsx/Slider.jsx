@@ -1,3 +1,4 @@
+import React from 'react';
 "use client";
 import { Carousel } from "flowbite-react";
 import slider1 from '../../../public/img/slider1.jpg'

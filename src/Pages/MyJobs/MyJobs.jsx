@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import MyJobTable from "./MyJobTable";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -17,6 +18,10 @@ const MyJobs = () => {
     .then(res => res.json())
     .then(data => {
         setLoadedDatas(data)
+    })
+    .catch(error => {
+        console.error(error);
+        return location.reload();
     })
 
     return (
