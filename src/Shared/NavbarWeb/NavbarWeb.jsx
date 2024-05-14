@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import { useContext } from 'react';
@@ -18,6 +18,8 @@ const NavbarWeb = () => {
     const loggedUser = JSON.parse(user2);
     const photo2 = loggedUser?.providerData[0]?.photoURL;
     const name2 = loggedUser?.providerData[0]?.displayName;
+
+    const navigate = useNavigate();
 
     const privateRoutes = <>
         <NavLink to={'/add-a-job'} className={({ isActive, isPending }) =>
@@ -79,6 +81,7 @@ const NavbarWeb = () => {
     const {signOutUser} = useContext(AuthContext)
 
     const handleSignOut = () => {
+        navigate('/')
         signOutUser()
         localStorage.removeItem('signedUser')
         localStorage.removeItem('loggedUser')

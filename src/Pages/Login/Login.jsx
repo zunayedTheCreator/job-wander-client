@@ -1,12 +1,28 @@
 import React from 'react';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { useContext } from 'react';
 import Swal from 'sweetalert2'
 
 const Login = () => {
+    const user1 = localStorage.getItem('loggedUser');
+    const user2 = localStorage.getItem('signedUser');
+    const currentUser = user1 || user2;
+
+    const location = useLocation();
+    console.log(location);
+    const navigate = useNavigate();
+
+    if (!currentUser) {
+        if (location.state !== null) {
+            Swal.fire({
+                title: "Please Login First 😉",
+                icon: "error"
+              });
+        }
+    }
 
     const {signInUser} = useContext(AuthContext);
     const {googleLogin} = useContext(AuthContext);
@@ -30,12 +46,18 @@ const Login = () => {
                 const user = data[0];
                 const existedUser = localStorage.getItem('signedUser');
                 if (!existedUser) {
+                    setTimeout(() => { 
+                        location.reload()
+                    }, 2000);
                     const signedUser = JSON.stringify(user)
                     localStorage.setItem('signedUser', signedUser)
                     Swal.fire({
                         title: "Logged In :)",
                         icon: "success"
                       });
+                    if (user) {
+                        navigate(location?.state ? location?.state : '/')
+                    }
                 }
                 else{
                     Swal.fire({
@@ -62,8 +84,14 @@ const Login = () => {
             console.log(user);
             const existedUser = localStorage.getItem('loggedUser')
             if (!existedUser) {
+                setTimeout(() => { 
+                    location.reload()
+                }, 1000);
                 const loggedUser = JSON.stringify(user);
                 localStorage.setItem('loggedUser', loggedUser);
+                if (user) {
+                    navigate(location?.state ? location?.state : '/')
+                }
             }
             else{
                 Swal.fire({
@@ -89,8 +117,14 @@ const Login = () => {
             console.log(user);
             const existedUser = localStorage.getItem('loggedUser')
             if (!existedUser) {
+                setTimeout(() => { 
+                    location.reload()
+                }, 1000);
                 const loggedUser = JSON.stringify(user);
                 localStorage.setItem('loggedUser', loggedUser);
+                if (user) {
+                    navigate('/')
+                }
             }
             else{
                 Swal.fire({

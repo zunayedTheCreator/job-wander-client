@@ -15,6 +15,7 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import UpdateJob from './Pages/UpdateJob/UpdateJob';
 import JobDetails from './Pages/JobDetails/JobDetails';
 import AppliedJobs from './Pages/Home/AppliedJobs/AppliedJobs';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -45,25 +46,25 @@ const router = createBrowserRouter([
           },
           {
               path: '/add-a-job',
-              element: <AddJob></AddJob>
+              element: <PrivateRoutes><AddJob></AddJob></PrivateRoutes>
           },
           {
               path: '/my-jobs',
-              element: <MyJobs></MyJobs>,
+              element: <PrivateRoutes><MyJobs></MyJobs></PrivateRoutes>,
           },
           {
               path: '/update-job/:id',
-              element: <UpdateJob></UpdateJob>,
+              element: <PrivateRoutes><UpdateJob></UpdateJob></PrivateRoutes>,
               loader: ({params}) => fetch(`http://localhost:5000/job/${params.id}`)
           },
           {
               path: '/job-details/:id',
-              element: <JobDetails></JobDetails>,
+              element: <PrivateRoutes><JobDetails></JobDetails></PrivateRoutes>,
               loader: ({params}) => fetch(`http://localhost:5000/job/${params.id}`)
           },
           {
               path: '/applied-jobs',
-              element: <AppliedJobs></AppliedJobs>,
+              element: <PrivateRoutes><AppliedJobs></AppliedJobs></PrivateRoutes>,
           },
       ]
   }

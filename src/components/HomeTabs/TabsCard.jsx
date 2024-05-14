@@ -3,8 +3,7 @@ import { FaRegClock, FaUserFriends } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const TabsCard = ({job}) => {
-
-    const {user_name, job_title, salary, posting_date, deadline_date, total_applicants, _id, photo} = job;
+    const {user_name, job_title, salary, posting_date, deadline_date, total_applicants, _id, photo} = job
 
     return (
         <div className="card w-[330px] md:w-[370px] mx-auto lg:mx-0 bg-base-100 shadow-xl image-full border-2 border-sky-500">
