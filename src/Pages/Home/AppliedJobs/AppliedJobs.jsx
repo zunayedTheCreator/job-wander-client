@@ -96,7 +96,7 @@ const AppliedJobs = () => {
                         }
                     </tbody>}
                 </table>
-                {loadedDatas.length === 0 ? <h2 className='text-4xl text-red-500 font-bold text-center my-8'>You haven't applied any job yet :(</h2> : <></>}
+                {loadedDatas.length === 0 ? <h2 className='text-4xl text-red-500 font-bold text-center my-8'>You haven't applied any jobs yet :(</h2> : <></>}
             </div>
         </div>
     );

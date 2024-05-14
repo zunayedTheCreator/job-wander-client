@@ -17,7 +17,6 @@ const AppliedTable = ({job}) => {
             <td className="font-bold">{deadline_date}</td>
             <td className="font-bold">${salary}</td>
             <td><button className="btn min-h-0 px-3 py-3 bg-yellow-400 hover:bg-yellow-300 font-bold text-black rounded-full"><FaFilePdf className='text-xl'></FaFilePdf></button></td>
-            <td><button className="btn min-h-0 px-3 py-3 bg-red-500 hover:bg-red-400 font-bold text-black rounded-full"><FaRegTimesCircle className='text-xl'></FaRegTimesCircle></button></td>
         </tr>
     );
 };
