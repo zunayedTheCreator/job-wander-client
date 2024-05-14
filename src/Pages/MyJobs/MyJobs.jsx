@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from "react";
 import MyJobTable from "./MyJobTable";
+import { Grid } from 'react-loader-spinner';
 
 const MyJobs = () => {
     const [loadedDatas , setLoadedDatas] = useState([])
@@ -26,13 +27,23 @@ const MyJobs = () => {
         })
     }, [currentEmail]);
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+        setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
     return (
         <div className="mt-10 w-full lg:w-[1000px] xl:w-[1300px] mx-auto">
             <div>
                 <h2 className="text-4xl text-sky-500 font-bold text-center">Your Jobs</h2>
                 <div className="border-t-2 border-sky-600 w-[300px] mx-auto mt-2 mb-6"></div>
             </div>
-            <div className="overflow-x-auto border-b-2 border-sky-500">
+            { loading ? (<div className='w-fit my-20 mx-auto'><Grid height={50} width={50} color={'#7DD3FC'} loading={loading} size={30}></Grid></div>) : (<div className="overflow-x-auto border-b-2 border-sky-500">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -53,7 +64,7 @@ const MyJobs = () => {
                     </tbody>
                 </table>
                     {loadedDatas.length === 0 ? <h2 className='text-4xl text-red-500 font-bold text-center my-8'>You haven't added any jobs yet :(</h2> : <></>}
-            </div>
+            </div>)}
         </div>
     );
 };
