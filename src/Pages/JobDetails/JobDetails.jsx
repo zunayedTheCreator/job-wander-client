@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from "react-router-dom";
-import { FaClock, FaDollarSign, FaUserFriends } from 'react-icons/fa';
+import { FaBriefcase, FaClock, FaDollarSign, FaUserFriends } from 'react-icons/fa';
 import Swal from 'sweetalert2'
 
 const JobDetails = () => {
@@ -82,7 +82,8 @@ const JobDetails = () => {
                         <h2 className="card-title text-5xl font-bold text-sky-500 mb-3">{job_title}</h2>
                         <p className='font-bold text-lg mb-5'>- {description}</p>
                         <h3 className='text-lg font-bold flex items-center gap-1 mb-3'><FaDollarSign className='text-2xl'></FaDollarSign> {salary}</h3>
-                        <h3 className='text-lg font-bold flex items-center gap-1'><FaClock className='text-2xl'></FaClock> {deadline_date} - Deadline</h3>
+                        <h3 className='text-lg font-bold flex items-center gap-1 mb-3'><FaClock className='text-2xl'></FaClock> {deadline_date} - Deadline</h3>
+                        <h3 className='text-lg font-bold flex items-center gap-1'><FaBriefcase className='text-2xl'></FaBriefcase> {job_category}</h3>
                     </div>
                     <div className="card-actions items-center justify-between">
                         <h3 className='text-xl font-bold flex items-center gap-1'><FaUserFriends className='text-xl'></FaUserFriends>Applicants: {applicantsCount}</h3>
