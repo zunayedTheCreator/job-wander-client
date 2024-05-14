@@ -19,7 +19,7 @@ const JobDetails = () => {
 
     const currentEmail = email1 || email2;
     const currentName = name1 || name2;
-
+    
     const {user_name, user_email, job_title, job_category, salary, description, posting_date, deadline_date, photo, total_applicants, _id} = job;
 
     const [applicantsCount, setApplicantsCount] = useState(total_applicants);
@@ -36,40 +36,52 @@ const JobDetails = () => {
     
     const handleApply = async e => {
         e.preventDefault();
-
+        
         const resume_link = e.target.resume_link.value;
-
+        
         const appliedJob = {user_name: currentName, user_email: currentEmail, job_title, job_category, salary, description, posting_date, deadline_date, photo, main_id: _id, resume_link}
         console.log(appliedJob);
-
-        try {
-            const response = await fetch(`http://localhost:5000/job/${_id}`, {
-                method: 'PATCH'
-            });
-            if (response.ok) {
-                setApplicantsCount(prevCount => prevCount + 1);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Job applied successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Nice'
-                })
-                fetch('http://localhost:5000/applied', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(appliedJob)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                })
-            } else {
-                console.error('Failed to apply for job:', response.statusText);
+        
+        const alreadyApplied = localStorage.getItem(_id);
+        if (alreadyApplied === _id) {
+            Swal.fire({
+                title: 'Hold On!',
+                text: 'You already applied for this job',
+                icon: 'error',
+                confirmButtonText: "I'm Sorry"
+            })
+        }
+        else{
+            try {
+                const response = await fetch(`http://localhost:5000/job/${_id}`, {
+                    method: 'PATCH'
+                });
+                if (response.ok) {
+                    setApplicantsCount(prevCount => prevCount + 1);
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Job applied successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Nice'
+                    })
+                    fetch('http://localhost:5000/applied', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(appliedJob)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem(appliedJob.main_id, appliedJob.main_id)
+                    })
+                } else {
+                    console.error('Failed to apply for job:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error applying for job:', error);
             }
-        } catch (error) {
-            console.error('Error applying for job:', error);
         }
     };
 
