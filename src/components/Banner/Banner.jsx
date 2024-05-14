@@ -26,6 +26,10 @@ const Banner = () => {
         }
     }
 
+    const handleClear = () => {
+        setSearchJobs([])
+    }
+
     return (
         <div>
             <div className='mt-8 relative'>
@@ -53,6 +57,9 @@ const Banner = () => {
                 {
                     searchJobs.map(job => <SearchCard key={job._id} job={job}></SearchCard>)
                 }
+                <div className='text-center'>
+                    <button onClick={handleClear} className='btn rounded bg-red-600 hover:bg-red-500 font-bold text-black'>Clear All</button>
+                </div>
             </div>}
         </div>
     );

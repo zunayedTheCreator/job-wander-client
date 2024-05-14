@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddJob = () => {
-    const currentDate = new Date().toISOString().slice(0, 10);
+    const [startDate, setStartDate] = useState(new Date());
+    const currentDate = startDate.toISOString().slice(0, 10);
 
     const total_applicants = 0;
 
@@ -26,7 +29,7 @@ const AddJob = () => {
         const salary = form.salary.value;
         const description = form.description.value;
         const posting_date = form.posting_date.value;
-        const deadline_date = form.deadline_date.value;
+        const deadline_date = currentDate;
         const photo = form.photo.value;
         const newJob = {user_name, user_email, job_title, job_category, salary, description, posting_date, deadline_date, photo, total_applicants}
 
@@ -92,7 +95,7 @@ const AddJob = () => {
                             <div className="label">
                                 <span className="label-text">Job Deadline Date</span>
                             </div>
-                            <input required type="date" name="deadline_date" placeholder="Deadline Date" className="input input-bordered rounded w-full" />
+                            <DatePicker className="input input-bordered rounded w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </label>
                     </div>
 
