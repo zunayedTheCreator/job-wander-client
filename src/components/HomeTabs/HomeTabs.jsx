@@ -16,7 +16,7 @@ const HomeTabs = () => {
     const [partTimeJobs, setPartTimeJobs] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/job`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setAllJobs(data)
@@ -24,27 +24,27 @@ const HomeTabs = () => {
         })
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/job/On-Site%20Jobs`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job/On-Site%20Jobs`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setOnSiteJobs(data)
         })
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/job/Remote%20Jobs`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job/Remote%20Jobs`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setRemoteJobs(data)        })
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/job/Hybrid%20Jobs`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job/Hybrid%20Jobs`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setHybridJobs(data)
         })
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/job/Part-Time%20Jobs`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job/Part-Time%20Jobs`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setPartTimeJobs(data)

@@ -3,8 +3,10 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const Register = () => {
+    MyDynamicTitle('JobWander | Register')
     const {createUser} = useContext(AuthContext);
 
     const handleCreateUser = e => {
@@ -22,7 +24,7 @@ const Register = () => {
                 console.log(user);
             
                 const newUser = {name, email, password, photo}
-                fetch('http://localhost:5000/user', {
+                fetch('https://job-wander-server.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

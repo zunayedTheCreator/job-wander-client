@@ -5,8 +5,10 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 import { Grid, Hearts } from 'react-loader-spinner';
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const AllJobs = () => {
+    MyDynamicTitle('JobWander | All Jobs')
     const [jobResults, setJobResults] = useState([]);
     const [searchJobs, setSearchJobs] = useState([]);
     const jobs = useLoaderData();
@@ -31,7 +33,7 @@ const AllJobs = () => {
               setSearchJobs(jobResults)
         }
         else{
-            fetch(`http://localhost:5000/job/${input}`, {credentials: 'include'})
+            fetch(`https://job-wander-server.vercel.app/job/${input}`, {credentials: 'include'})
             .then(res => res.json())
             .then(data => {
                 setSearchJobs(data)

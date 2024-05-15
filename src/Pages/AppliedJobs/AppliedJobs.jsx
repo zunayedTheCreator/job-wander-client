@@ -3,8 +3,10 @@ import AppliedTable from './AppliedTable';
 import { FaAngleDown } from 'react-icons/fa';
 import { Grid } from 'react-loader-spinner';
 import { Document, PDFDownloadLink, Page, Text, View } from '@react-pdf/renderer';
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const AppliedJobs = () => {
+    MyDynamicTitle('JobWander | Applied Jobs')
     const [loadedDatas , setLoadedDatas] = useState([])
     const [filteredDatas , setFilteredDatas] = useState([])
 
@@ -21,7 +23,7 @@ const AppliedJobs = () => {
     console.log(loadedDatas.length);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/applied/${currentEmail}`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/applied/${currentEmail}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setLoadedDatas(data)

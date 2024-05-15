@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useState } from "react";
 import MyJobTable from "./MyJobTable";
 import { Grid } from 'react-loader-spinner';
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const MyJobs = () => {
+    MyDynamicTitle('JobWander | My Jobs')
     const [loadedDatas , setLoadedDatas] = useState([])
 
     const user1 = localStorage.getItem('signedUser');
@@ -17,7 +19,7 @@ const MyJobs = () => {
     const currentEmail = email1 || email2;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/job/${currentEmail}`, {credentials: 'include'})
+        fetch(`https://job-wander-server.vercel.app/job/${currentEmail}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setLoadedDatas(data)

@@ -1,8 +1,10 @@
 import React from 'react';
 import img from '../../../public/img/error.png'
 import { Link } from 'react-router-dom';
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const ErrorPage = () => {
+    MyDynamicTitle('Error | 404')
     return (
         <div className='flex flex-col-reverse lg:flex-row items-center justify-around gap-14 w-full lg:w-[1000px] xl:w-[1300px] mx-auto mt-16 mb-16'>
             <div>

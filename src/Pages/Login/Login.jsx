@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { useContext } from 'react';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const Login = () => {
+    MyDynamicTitle('JobWander | Login')
     const user1 = localStorage.getItem('loggedUser');
     const user2 = localStorage.getItem('signedUser');
     const currentUser = user1 || user2;
@@ -40,7 +42,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user);
 
-            fetch(`http://localhost:5000/user/${email}`)
+            fetch(`https://job-wander-server.vercel.app/user/${email}`)
             .then(res => res.json())
             .then(data => {
                 const user = data[0];

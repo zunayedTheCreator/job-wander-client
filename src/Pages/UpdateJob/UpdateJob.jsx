@@ -3,9 +3,10 @@ import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const UpdateJob = () => {
-    
+    MyDynamicTitle('JobWander | Update Job')
     const job = useLoaderData();
     const {user_name, user_email, job_title, job_category, salary, description, posting_date, deadline_date, photo, total_applicants, _id} = job;
     
@@ -32,7 +33,7 @@ const UpdateJob = () => {
         console.log(updateItem);
 
         // send item to server
-        fetch(`http://localhost:5000/job/${_id}`, {
+        fetch(`https://job-wander-server.vercel.app/job/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

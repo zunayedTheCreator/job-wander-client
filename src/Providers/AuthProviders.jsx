@@ -45,13 +45,13 @@ const AuthProviders = ({children}) => {
             const currentEmail = { email: email1 || email2 };
 
             if (currentUser) {
-                axios.post( 'http://localhost:5000/jwt', currentEmail, {withCredentials: true})
+                axios.post( 'https://job-wander-server.vercel.app/jwt', currentEmail, {withCredentials: true})
                 .then(res => {
                     console.log('token', res.data);
                 })
             }
             else{
-                axios.post('http://localhost:5000/logout', currentEmail, {withCredentials: true})
+                axios.post('https://job-wander-server.vercel.app/logout', currentEmail, {withCredentials: true})
                 .then(res => {
                     console.log(res.data);
                 })

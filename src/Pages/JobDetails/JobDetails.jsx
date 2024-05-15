@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from "react-router-dom";
 import { FaBriefcase, FaClock, FaDollarSign, FaUserFriends } from 'react-icons/fa';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const JobDetails = () => {
-
+    MyDynamicTitle('JobWander | Job Detail')
     const job = useLoaderData();
 
     const user1 = localStorage.getItem('signedUser');
@@ -53,7 +54,7 @@ const JobDetails = () => {
         }
         else{
             try {
-                const response = await fetch(`http://localhost:5000/job/${_id}`, {
+                const response = await fetch(`https://job-wander-server.vercel.app/job/${_id}`, {
                     method: 'PATCH'
                 });
                 if (response.ok) {
@@ -64,7 +65,7 @@ const JobDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Nice'
                     })
-                    fetch('http://localhost:5000/applied', {
+                    fetch('https://job-wander-server.vercel.app/applied', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

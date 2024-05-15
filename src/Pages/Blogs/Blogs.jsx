@@ -2,8 +2,10 @@ import React from 'react';
 "use client";
 import { Accordion } from "flowbite-react";
 import CodeExplain from '../../components/CodeExplain/CodeExplain';
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const Blogs = () => {
+    MyDynamicTitle('JobWander | Blogs')
     return (
         <div className="mt-14 max-w-7xl mx-auto">
             <h2 className="text-sky-500 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-center">Frequently Asked Question</h2>

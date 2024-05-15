@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import MyDynamicTitle from '../../MyDynamicTitle';
 
 const AddJob = () => {
+    MyDynamicTitle('JobWander | Add a Job')
     const [startDate, setStartDate] = useState(new Date());
     const currentDate = startDate.toISOString().slice(0, 10);
 
@@ -35,7 +37,7 @@ const AddJob = () => {
 
         console.log(newJob);
 
-        fetch('http://localhost:5000/job', {
+        fetch('https://job-wander-server.vercel.app/job', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
