@@ -1,6 +1,7 @@
 import React from 'react';
 "use client";
 import { Accordion } from "flowbite-react";
+import CodeExplain from '../../components/CodeExplain/CodeExplain';
 
 const Blogs = () => {
     return (
@@ -52,6 +53,11 @@ const Blogs = () => {
                         </Accordion.Content>
                     </Accordion.Panel>
                 </Accordion>
+            </div>
+            <h2 className='mt-14 font-bold text-sky-600 text-center mb-8 text-5xl'>Code Explain</h2>
+            <CodeExplain></CodeExplain>
+            <div className='border-t-2 border-sky-500'>
+                <h2 className='text-2xl text-center mt-4 font-bold text-sky-500'>These are the explanation of some code in this project.</h2>
             </div>
         </div>
     );

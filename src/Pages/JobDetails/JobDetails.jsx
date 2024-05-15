@@ -42,8 +42,8 @@ const JobDetails = () => {
         const appliedJob = {user_name: currentName, user_email: currentEmail, job_title, job_category, salary, description, posting_date, deadline_date, photo, main_id: _id, resume_link}
         console.log(appliedJob);
         
-        const alreadyApplied = localStorage.getItem(_id);
-        if (alreadyApplied === _id) {
+        const alreadyApplied = localStorage.getItem(appliedJob.user_email+_id);
+        if (alreadyApplied === currentEmail+_id) {
             Swal.fire({
                 title: 'Hold On!',
                 text: 'You already applied for this job',
@@ -74,7 +74,7 @@ const JobDetails = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-                        localStorage.setItem(appliedJob.main_id, appliedJob.main_id)
+                        localStorage.setItem(appliedJob.user_email+appliedJob.main_id, appliedJob.user_email+appliedJob.main_id)
                     })
                 } else {
                     console.error('Failed to apply for job:', response.statusText);

@@ -31,7 +31,7 @@ const AllJobs = () => {
               setSearchJobs(jobResults)
         }
         else{
-            fetch(`http://localhost:5000/job/${input}`)
+            fetch(`http://localhost:5000/job/${input}`, {credentials: 'include'})
             .then(res => res.json())
             .then(data => {
                 setSearchJobs(data)

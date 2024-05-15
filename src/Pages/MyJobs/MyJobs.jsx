@@ -17,7 +17,7 @@ const MyJobs = () => {
     const currentEmail = email1 || email2;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/job/${currentEmail}`)
+        fetch(`http://localhost:5000/job/${currentEmail}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setLoadedDatas(data)

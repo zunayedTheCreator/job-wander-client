@@ -46,9 +46,6 @@ const Login = () => {
                 const user = data[0];
                 const existedUser = localStorage.getItem('signedUser');
                 if (!existedUser) {
-                    setTimeout(() => { 
-                        location.reload()
-                    }, 2000);
                     const signedUser = JSON.stringify(user)
                     localStorage.setItem('signedUser', signedUser)
                     Swal.fire({
@@ -84,9 +81,6 @@ const Login = () => {
             console.log(user);
             const existedUser = localStorage.getItem('loggedUser')
             if (!existedUser) {
-                setTimeout(() => { 
-                    location.reload()
-                }, 1000);
                 const loggedUser = JSON.stringify(user);
                 localStorage.setItem('loggedUser', loggedUser);
                 if (user) {
@@ -117,9 +111,6 @@ const Login = () => {
             console.log(user);
             const existedUser = localStorage.getItem('loggedUser')
             if (!existedUser) {
-                setTimeout(() => { 
-                    location.reload()
-                }, 1000);
                 const loggedUser = JSON.stringify(user);
                 localStorage.setItem('loggedUser', loggedUser);
                 if (user) {

@@ -2,23 +2,18 @@ import React from 'react';
 "use client";
 import { Footer } from "flowbite-react";
 import { FaDribbble, FaFacebook, FaGithub, FaInstagram, FaTwitch, FaTwitter } from "react-icons/fa";
+import logo from '../../../public/img/logo.png'
 
 const FooterWeb = () => {
-
-    const brand = <h4 className="text-white font-bold text-4xl">Job<span className="text-sky-400">Wander</span></h4>
 
     return (
         <div>
             <Footer container className="p-0 mt-14">
                 <div className="w-full bg-sky-800 text-white p-6">
                     <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-                    <div>
-                        <Footer.Brand
-                        href="/"
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        alt="Job Wander Logo"
-                        name={brand}
-                        />
+                    <div className='flex items-center gap-2'>
+                        <img className='w-[50px] bg-[#ffffff66] p-1 rounded-md' src={logo} alt="" />
+                        <h4 className="text-white font-bold text-4xl">Job<span className="text-sky-400">Wander</span></h4>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6 text-white">
                         <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AppliedTable from './AppliedTable';
 import { FaAngleDown } from 'react-icons/fa';
 import { Grid } from 'react-loader-spinner';
+import { Document, PDFDownloadLink, Page, Text, View } from '@react-pdf/renderer';
 
 const AppliedJobs = () => {
     const [loadedDatas , setLoadedDatas] = useState([])
@@ -20,7 +21,7 @@ const AppliedJobs = () => {
     console.log(loadedDatas.length);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/applied/${currentEmail}`)
+        fetch(`http://localhost:5000/applied/${currentEmail}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setLoadedDatas(data)
@@ -65,13 +66,38 @@ const AppliedJobs = () => {
         return () => clearTimeout(timeout);
     }, []);
 
+    const PDFDocument = () => (
+        <Document>
+            <Page size="A4">
+                {
+                    filteredDatas.map(job => <View key={job._id}>
+                        <Text className='text-2xl font-bold text-black'>- {job.job_title}</Text>
+                        <Text className='font-bold text-black'>{job.deadline_date} - Deadline</Text>
+                        <Text className='font-bold text-black'>${job.salary}</Text>
+                        <Text className='font-bold text-black'>{job.job_category}</Text>
+                        <Text className='font-bold text-black py-4'>--------------------------------------------------</Text>
+                    </View>
+                )}
+            </Page>
+            
+        </Document>
+      );
+
+      const DownloadButton = () => (
+        <PDFDownloadLink document={<PDFDocument />} fileName="applied-jobs.pdf">
+          {({ blob, url, loading, error }) =>
+            loading ? 'Loading document...' : 'Download PDF'
+          }
+        </PDFDownloadLink>
+      );
+
     return (
         <div className="mt-10 w-full lg:w-[1000px] xl:w-[1300px] mx-auto">
             <div>
                 <h2 className="text-4xl text-sky-500 font-bold text-center">Your Applied Jobs</h2>
                 <div className="border-t-2 border-sky-600 w-[300px] mx-auto mt-2 mb-4"></div>
             </div>
-            <div className='text-center mb-4'>
+            <div className='flex items-center gap-3 justify-center mb-4'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn m-1 bg-sky-500 hover:bg-sky-500 rounded text-black font-bold flex items-center">Select Category<FaAngleDown className='text-lg'></FaAngleDown> </div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 rounded border-2 border-sky-500 font-bold">
@@ -86,6 +112,7 @@ const AppliedJobs = () => {
                         <li><a onClick={handlePartTimeJob}>Part-Time Jobs</a></li>
                     </ul>
                 </div>
+                <button className='btn bg-yellow-400 hover:bg-yellow-300 rounded text-black font-bold'><DownloadButton/></button>
             </div>
             { loading ? (<div className='w-fit my-20 mx-auto'><Grid height={50} width={50} color={'#7DD3FC'} loading={loading} size={30}></Grid></div>) : (<div className="overflow-x-auto border-b-2 border-sky-500">
                 <table className="table">
@@ -97,8 +124,6 @@ const AppliedJobs = () => {
                         <th>Job Category</th>
                         <th>Deadline</th>
                         <th>Salary</th>
-                        <th className="w-12"></th>
-                        <th className="w-12"></th>
                     </tr>
                     </thead>
                     { loadedDatas.length === 0 ? <></> : <tbody>

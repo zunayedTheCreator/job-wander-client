@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaRegTimesCircle, FaFilePdf } from 'react-icons/fa';
 
 const AppliedTable = ({job}) => {
     const {user_name, user_email, job_title, job_category, salary, description, posting_date, deadline_date, photo, total_applicants}= job;
@@ -16,7 +15,6 @@ const AppliedTable = ({job}) => {
             <td className="font-bold">{job_category}</td>
             <td className="font-bold">{deadline_date}</td>
             <td className="font-bold">${salary}</td>
-            <td><button className="btn min-h-0 px-3 py-3 bg-yellow-400 hover:bg-yellow-300 font-bold text-black rounded-full"><FaFilePdf className='text-xl'></FaFilePdf></button></td>
         </tr>
     );
 };

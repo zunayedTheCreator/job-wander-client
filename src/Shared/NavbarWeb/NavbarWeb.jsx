@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { RxSlash } from "react-icons/rx";
 import { Tooltip } from 'flowbite-react';
+import logo from '../../../public/img/logo.png'
 
 const NavbarWeb = () => {
 
@@ -89,15 +90,13 @@ const NavbarWeb = () => {
             title: "Successfully Logged Out",
             icon: "success"
         });
-        setTimeout(() => { 
-            location.reload()
-        }, 2000);
     }
 
     return (
         <div className="navbar md:px-6 border-b-2 drop-shadow-lg border-sky-600 fixed top-0 left-0 w-full z-[1000] bg-[#ffffffE6]">
-            <div className="navbar-start">
-                <Link><a className="text-3xl font-bold text-black">Job<span className='text-sky-500'>Wander</span></a></Link>
+            <div className="navbar-start items-center gap-3">
+                <img className='w-[50px]' src={logo} alt="" />
+                <Link><a className="text-3xl font-bold text-black hidden xl:flex">Job<span className='text-sky-500'>Wander</span></a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-bold items-center text-black">
