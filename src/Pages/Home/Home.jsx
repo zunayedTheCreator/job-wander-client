@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import Slider from "../../components/Slider.jsx/Slider";
 import HomeTabs from '../../components/HomeTabs/HomeTabs';
 import { motion, useScroll } from "framer-motion";
+import UpComing from '../../components/UpComing/UpComing';
 
 const Home = () => {
     const { scrollYProgress } = useScroll();
@@ -14,6 +15,7 @@ const Home = () => {
                 <HomeTabs></HomeTabs>
             </div>
             <Slider></Slider>
+            <UpComing></UpComing>
         </div>
     );
 };
